@@ -1,0 +1,3 @@
+A common usecase can be :
+1. Running a Pod for log collection on all nodes.
+2. Or maybe you have different hardware configuration on your nodes and you want to make that available to a specific set of pods.
