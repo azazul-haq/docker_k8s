@@ -1,0 +1,62 @@
+Commands Used :
+git clone https://github.com/ashishrpandey/example-voting-app
+cd /root/example-voting-app/k8s-specifications
+kubectl delete all --all
+kubectl apply -f .
+kubectl get all
+
+My observations:
+Observations after deleting the pods :
+
+What happened after deleting voting pod?
+  Command used : kubectl delete po vote-76349dc97-9w5sp
+  Stopped the voting application.
+  A new pod gets created with a new pod name.
+  
+What happened after deleting worker pod?
+  Command used : kubectl delete po worker-ddasf3484-8dk8t
+                 kubectl logs pod_name
+  Pod terminated and new pod created.
+  No major issues.
+  
+What happened after deleting worker pod?
+  Command used : kubectl delete po result-sahaf9584-1vk8m
+  Application was running but functionality was missing.
+
+What happened after db pod deletion?
+  Command used : kubectl delete po db-h74cd94f4-mclmv
+  Votes are captured.
+  Results page doesn't work. Doesn't show no.of pods. The connection between the result pod and the db pod was stopped.(Why result app STOPPED working after deleting the db pod?)
+  Container within Worker pod got restarted. DB couldn't connect to worker so it restarted worker.
+
+
+How to make the RESULT POD work again?
+  The connection got established back, after deleting the results pod.
+
+Some Jargons learnt so far:
+Docker :
+Isolation and Abstraction
+Docker Daemon -> Docker Engine
+Containerization 
+Microservices
+
+Kuberentes :
+Cluster
+Node
+Pods and Labels
+Creation and deletion of pods
+Containers
+Namespace
+Controllers
+Replication Controller (RC)
+Replica Set (RS)
+Job -> Batch Job & Cron Job
+Daemon Set (DS)
+Controller manager
+Replication Manager
+Service
+NodePort
+Endpoints
+Load Balance
+Deployment
+Rolling Update
